@@ -188,7 +188,8 @@ class Weather(pd.DataFrame):
           
         # Determine extraterrestrial radiation and airmass
         #extra = pv.irradiance.extraradiation(timestamps)
-            extra = pv.irradiance.get_extra_radiation(timestamps,epoch_year=2016)
+            year = timestamps.year[0]
+            extra = pv.irradiance.get_extra_radiation(timestamps,epoch_year=year)
 
         airmass_rel = pv.atmosphere.get_relative_airmass(angles['apparent_zenith'])
         airmass = pv.atmosphere.get_absolute_airmass(airmass_rel, pressure)
